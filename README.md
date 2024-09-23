@@ -4,11 +4,17 @@
 
 ## Tecnologías Utilizadas
 
--![Java](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg) **Java**: El lenguaje de programación en el que están implementados los microservicios.
--![Spring Boot](https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd285ed2ba.svg) **Spring Boot**: Framework utilizado para construir los microservicios, facilitando la creación de aplicaciones Java robustas y de alto rendimiento.
--![Eureka Server](https://spring.io/images/projects/spring-cloud-bdd81fb3a652e21d29210094a3e42a4b.svg) **Eureka Server**: Servicio de descubrimiento que permite a los microservicios registrarse y encontrarse entre sí.
--![Docker](https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png) **Docker**: Utilizado para contenerizar los microservicios, asegurando que puedan ejecutarse de manera consistente en diferentes entornos.
+- **Java**: El lenguaje de programación en el que están implementados los microservicios.
+- **Spring Boot**: Framework utilizado para construir los microservicios, facilitando la creación de aplicaciones Java robustas y de alto rendimiento.
+- **Eureka Server**: Servicio de descubrimiento que permite a los microservicios registrarse y encontrarse entre sí.
+- **Docker**: Utilizado para contenerizar los microservicios, asegurando que puedan ejecutarse de manera consistente en diferentes entornos.
 
+- ![Java](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg)
+- ![Spring Boot](https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd285ed2ba.svg)
+- ![Eureka Server](https://spring.io/images/projects/spring-cloud-bdd81fb3a652e21d29210094a3e42a4b.svg)
+- ![Docker](https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png)
+
+  
 ## Arquitectura del Proyecto
 
 - **Microservicios**: Cada uno de los microservicios expone recursos específicos y se comunica con los demás a través de Eureka.
