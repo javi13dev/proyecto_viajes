@@ -1,9 +1,12 @@
 # PROYECTO DE VIAJES
 
-Cuatro microservicios exponen diferentes recursos para la realización de reservas y consulta de las mismas.
-Se registrarán y conectarán mediante eureka y el consumo de recursos se realizará por descubrimiento.
-El cliente consumirá los recursos a través de un gateway, abstrayendo la ubicación de los microservicios.
+- **Cuatro microservicios exponen diferentes recursos para la realización de reservas y consulta de las mismas.**
+- **Se registrarán y conectarán mediante eureka y el consumo de recursos se realizará por descubrimiento.**
+- **El cliente consumirá los recursos a través de un gateway, abstrayendo la ubicación de los microservicios.**
 
+****
+- Los microservicios serán dockerizados
+****
 
 ### Dependencias Iniciales que comparten los microservicios
 ```xml
