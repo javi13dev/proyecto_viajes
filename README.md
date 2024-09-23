@@ -8,16 +8,10 @@
 - **Spring Boot**: Framework utilizado para construir los microservicios, facilitando la creación de aplicaciones Java robustas y de alto rendimiento.
 - **Eureka Server**: Servicio de descubrimiento que permite a los microservicios registrarse y encontrarse entre sí.
 - **Docker**: Utilizado para contenerizar los microservicios, asegurando que puedan ejecutarse de manera consistente en diferentes entornos.
-
----
-![Java](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg | width=100)
-![Spring Boot](https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd285ed2ba.svg | width=100)
-![Eureka Server](https://spring.io/images/projects/spring-cloud-bdd81fb3a652e21d29210094a3e42a4b.svg | width=100)
-![Docker](https://www.docker.com/sites/default/files/d8/2019-07/Moby-logo.png | width=100)
----
-
+- 
   
 ## Arquitectura del Proyecto
+
 - **Microservicios**: Cada uno de los microservicios expone recursos específicos y se comunica con los demás a través de Eureka.
 - **Gateway**: Un API Gateway centraliza el acceso a los microservicios, proporcionando una única entrada para el cliente.
 - **Eureka Server**: Actúa como un registro donde todos los microservicios se registran y desde donde pueden ser descubiertos.
