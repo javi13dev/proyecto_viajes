@@ -15,18 +15,20 @@ public class Mapeador {
 	public ReservaDto reservaEntityToDto(Reserva reserva) {
 		
 		return new ReservaDto(reserva.getIdreserva(),
-							reserva.getHotel().getNombre(),
-							reserva.getVuelo().getIdvuelo(),
-							reserva.getPrecio(),
+							hotelEntityToDto(reserva.getHotel()),
+							vueloEntityToDto(reserva.getVuelo()),
+							reserva.getVuelo().getPrecio(),
 							reserva.getUsuario());
 	}
 	
-	/*
-	public Reserva reservaDatoToEntity(ReservaDto reserva) {
-		return new Reserva(0,
-							reserva.)
+	public Reserva reservaDtotoEntity(ReservaDto reserva) {
+		
+		return new Reserva(reserva.getIdreserva(),
+							hotelDtoToEntity(reserva.getHotel()),
+							vueloDtoToEntity(reserva.getVuelo()),
+							reserva.getPrecio(),
+							reserva.getUsuario());
 	}
-	*/
 	
 	public Vuelo vueloDtoToEntity(VueloDto vuelo) {
 		return new Vuelo(vuelo.getIdvuelo(),
@@ -35,6 +37,15 @@ public class Mapeador {
 						vuelo.getPrecio(),
 						vuelo.getPlazas(),
 						vuelo.getDestino());
+	}
+	
+	public VueloDto vueloEntityToDto(Vuelo vuelo) {
+		return new VueloDto(vuelo.getIdvuelo(),
+							vuelo.getCompany(),
+							vuelo.getFecha(),
+							vuelo.getPrecio(),
+							vuelo.getPlazas(),
+							vuelo.getDestino());
 	}
 	
 	
@@ -46,6 +57,16 @@ public class Mapeador {
 							hotel.isDisponible(),
 							hotel.getLocalizacion());
 	}
+	
+	public  HotelDto hotelEntityToDto(Hotel hotel) {
+		return new HotelDto(hotel.getIdHotel(),
+							hotel.getNombre(),
+							hotel.getCategoria(),
+							hotel.getPrecio(),
+							hotel.isDisponible(),
+							hotel.getLocalizacion());
+	}
+
 	
 
 

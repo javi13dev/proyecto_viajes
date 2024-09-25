@@ -58,7 +58,5 @@ public class VueloDto {
 	public void setDestino(String destino) {
 		this.destino = destino;
 	}
-	
-	
 
 }

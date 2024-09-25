@@ -37,7 +37,7 @@ public class ReservaController {
 	
 	@PostMapping(value="reserva", consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> altaReserva(@RequestBody ReservaDto reserva, @RequestParam int plazas) { // Le indicamos que no hay tipo de devolución
-		System.out.println("Entra en reservaController");
+		System.out.println("Entra en reservaController 83");
 		if(service.altaReserva(reserva, plazas)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
