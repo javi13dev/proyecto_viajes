@@ -42,6 +42,8 @@ public class VueloServiceImpl implements VueloService {
 	@Override
 	public boolean updatePlazas(int idVuelo, int plazas) {
 		VueloDto vuelo = getVuelo(idVuelo);
+		System.out.println("Entra en updateplazas de vueloService");
+		System.out.println("idVuelo: "+idVuelo);
 		if(vuelo!=null) {
 			vuelo.setPlazas(vuelo.getPlazas()-plazas);
 			dao.save(mapeador.vueloDtoToEntity(vuelo));
