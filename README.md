@@ -8,7 +8,8 @@
 - **Spring Boot**: Framework utilizado para construir los microservicios, facilitando la creación de aplicaciones Java robustas y de alto rendimiento.
 - **Eureka Server**: Servicio de descubrimiento que permite a los microservicios registrarse y encontrarse entre sí.
 - **Docker**: Utilizado para contenerizar los microservicios, asegurando que puedan ejecutarse de manera consistente en diferentes entornos.
-- 
+  Se creará los .jar de cada microservicio y un dockerfile asignado al mismo.
+  Para su ejecución en conjunto se usará docker compose.
   
 ## Arquitectura del Proyecto
 
