@@ -1,5 +1,6 @@
 package init;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,11 +15,14 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration // Porque es una clase de configuración
 public class SecurityConfig {
 	
+	@Value("${IP_HOST:localhost}")
+	private String ipHost;
+	
 	@Bean
 	public JdbcUserDetailsManager users() {
 		DriverManagerDataSource ds=new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://10.1.3.32:3306/springsecurity");
+		ds.setUrl("jdbc:mysql://"+ ipHost +":3306/springsecurity");
 		ds.setUsername("root");
 		ds.setPassword("root");
 		JdbcUserDetailsManager jdbc=new JdbcUserDetailsManager(ds);
