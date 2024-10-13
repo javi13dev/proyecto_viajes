@@ -1,0 +1,85 @@
+version: "3"
+services:
+  eurekaserver:
+    build: ./06_eurekaserver
+    ports:
+    - 8761:8761
+    networks:
+    - mi-red
+  shotel:
+    build: ./01_imagen_hoteles
+    ports:
+    - 8000:8000
+    environment:
+    - DATABASE_URL=jdbc:mysql://mi-mysql:3306/viajes
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=8000
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+  scliente:
+    build: ./02_imagen_clientes
+    ports:
+    - 8500:8500
+    environment:
+    - DATABASE_URL=jdbc:mysql://mi-mysql:3306/viajes
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=8500
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+  svuelo:
+    build: ./03_imagen_vuelos
+    ports:
+    - 9000:9000
+    environment:
+    - DATABASE_URL=jdbc:mysql://mi-mysql:3306/viajes
+    - DATABASE_URL_SECURITY=jdbc:mysql://mi-mysql:3306/springsecurity
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=9000
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+  sreserva:
+    build: ./04_imagen_reservas
+    ports:
+    - 9500:9500
+    environment:
+    - DATABASE_URL=jdbc:mysql://mi-mysql:3306/viajes
+    - DATABASE_URL_SECURITY=jdbc:mysql://mi-mysql:3306/springsecurity
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=9500
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    - USUARIO=user1
+    - CONTRA=user1
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+  gateway:
+    build: ./05_gateway
+    ports:
+    - 11000:11000
+    environment:
+    - URL_EUREKA=http://192.168.3.78:8761/eureka
+    - PORT_HOST=11000
+    depends_on:
+    - scliente
+    - shotel
+    - svuelo
+    - sreserva
+    networks:
+    - mi-red
+networks:
+  mi-red:
+    external: true
