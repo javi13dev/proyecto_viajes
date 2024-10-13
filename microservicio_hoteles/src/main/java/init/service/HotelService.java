@@ -8,4 +8,5 @@ public interface HotelService {
 	
 	HotelDto getHotel(int idHotel);
 	List<HotelDto> getHoteles(String localizacion);
+	List<String> getDestinos();
 }

@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import init.dao.ReservaDao;
 import init.model.ReservaDto;
 import init.utilidades.Mapeador;
+import jakarta.annotation.PostConstruct;
 
 @Service
 public class ReservaServiceImpl implements ReservaService {
@@ -31,9 +32,9 @@ public class ReservaServiceImpl implements ReservaService {
 	ReservaDao reservaDao;
 	Mapeador mapeador;
 	
-	String url_servicio_vuelo = "http://servicio-vuelos/vuelos/vuelo";
-	String url_servicio_vuelo_securizado = "http://servicio-vuelos/vuelos/vuelosec";
-	String url_servicio_hotel = "http://servicio-hoteles/hoteles/hoteles/";
+	String url_servicio_vuelo;
+	String url_servicio_vuelo_securizado;
+	String url_servicio_hotel;
 	
 	// Para consumirlo necesito un Cliente
 	RestClient restClient;
@@ -42,6 +43,14 @@ public class ReservaServiceImpl implements ReservaService {
 		this.restClient = restClient;
 		this.reservaDao = reservaDao;
 		this.mapeador = mapeador;
+	}
+	
+	@PostConstruct
+	public void init() {
+		url_servicio_vuelo = "http://servicio-vuelos/vuelos/vuelo";
+		url_servicio_vuelo_securizado = "http://servicio-vuelos/vuelos/vuelosec";
+		url_servicio_hotel = "http://servicio-hoteles/hoteles/hoteles/";
+		//Porque se ha registrado en eureka con este nombre.
 	}
 	
 	// para codificar en base64, vamos a tener un método:

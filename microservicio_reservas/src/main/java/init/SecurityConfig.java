@@ -1,5 +1,6 @@
 package init;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -14,13 +15,24 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration // Porque es una clase de configuración
 public class SecurityConfig {
 	
+	@Value("${IP_HOST:localhost}")
+	private String ipHost;
+	@Value("${DATABASE_URL_SECURITY}")
+	private String securityDatabaseUrl;
+
+	@Value("${USUARIO_BBDD}")
+	private String dbUser;
+
+	@Value("${PASS_BBDD}")
+	private String dbPassword;
+	
 	@Bean
 	public JdbcUserDetailsManager users() {
 		DriverManagerDataSource ds=new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://10.1.3.32:3306/springsecurity");
-		ds.setUsername("root");
-		ds.setPassword("root");
+		ds.setUrl(securityDatabaseUrl);
+		ds.setUsername(dbUser);
+		ds.setPassword(dbPassword);
 		JdbcUserDetailsManager jdbc=new JdbcUserDetailsManager(ds);
 		jdbc.setUsersByUsernameQuery("select user,pwd,enabled from users where user=?");
 		jdbc.setAuthoritiesByUsernameQuery("select user,rol from roles where user=?");

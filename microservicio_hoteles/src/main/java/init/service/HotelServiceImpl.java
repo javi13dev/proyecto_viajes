@@ -34,5 +34,13 @@ public class HotelServiceImpl implements HotelService {
 		.map(h -> mapeador.hotelEntityToDto(h))
 		.toList();
 	}
+	
+	@Override
+	public List<String> getDestinos(){
+		return dao.findAll().stream()
+				.map(d -> d.getLocalizacion())
+				.distinct()
+				.toList();
+	}
 
 }
