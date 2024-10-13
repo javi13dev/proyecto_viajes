@@ -1,0 +1,60 @@
+GUÍA PREPARACIÓN CONTENEDOR BASE DE DATOS PARA PROYECTO VIAJES
+
+1. Crear un contenedor de MySQL
+
+docker run --name mi-mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:latest
+
+2. Copiar el archivo SQL al contenedor
+
+docker cp bbddviajes.sql mi-mysql:/bbddviajes.sql 
+docker cp springsecurity.sql mi-mysql:/springsecurity.sql
+
+Ahora que el archivo está dentro del contenedor, nos conectamos al contenedor y accedemos a su terminal
+
+docker exec -it mi-mysql bash
+
+3. Conectarse a MySQL dentro del contenedor
+Nos conectamos con el usuario que hayamos configurado.
+
+mysql -u root -p
+
+E introducimos la contraseña.
+
+4. Crear la base de datos (si es necesario)
+
+En este caso el .sql no contiene la creación de la base de datos.
+
+CREATE DATABASE viajes;
+
+CREATE DATABASE springsecurity;
+
+5. Importar el archivo SQL
+
+Seleccionamos la base de datos:
+
+USE mi_base_de_datos;
+
+
+Finalmente,importamos el archivo SQL con este comando:
+
+SOURCE /bbddviajes.sql;
+
+
+Esto ejecutará el archivo SQL y restaurará la base de datos en el contenedor MySQL.
+
+
+6. Establecer una red común para la base de datos y los microservicios 
+
+docker network create mi-red
+
+Conecto a la red los contenedores:
+
+docker network connect mi-red mi-mysql
+
+
+7. Para probarlo, se iniciará el contenedor antes de ejecutar docker compose up
+
+
+
+
+
