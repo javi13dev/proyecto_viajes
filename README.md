@@ -76,9 +76,9 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 ### Recursos Expuestos
 - **Datos de hotel por identificador**
-  - Ejemplo: `GET http://localhost:8000/hoteles/hotel/5`
+  - Ejemplo: `GET http://localhost:11000/shotel/hoteles/hotel/5`
 - **Lista de hoteles por localización**
-  - Ejemplo: `GET http://localhost:8000/hoteles/hoteles/Madrid`
+  - Ejemplo: `GET http://localhost:11000/shotel/hoteles/hoteles/Madrid`
 
 
 
@@ -95,11 +95,11 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Devolución de un Cliente por Usuario**
 
-  - URL: `http://localhost:8500/clientes/cliente/client1`
+  - URL: `http://localhost:11000/scliente/clientes/cliente/client1`
 
 - **Devolución de un Cliente a partir de Usuario y Contraseña**
 
-  - URL: `http://localhost:8500/clientes/cliente`
+  - URL: `http://localhost:11000/scliente/clientes/cliente`
   - Ejemplo de petición (login):
   
     ```json
@@ -123,7 +123,7 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Registro de un Cliente**
 
-  - URL: `http://localhost:8500/clientes/registro`
+  - URL: `http://localhost:11000/scliente/clientes/registro`
   - Ejemplo de cuerpo de petición:
   
     ```json
@@ -147,11 +147,11 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Datos de un Vuelo por Identificador**
   
-  - URL: `http://localhost:9000/vuelos/vuelo/1`
+  - URL: `http://localhost:11000/svuelo/vuelos/vuelo/1`
 
 - **Lista de Vuelos por Destino y Número de Plazas**
 
-  - URL: `http://localhost:9000/vuelos/vuelos?destino=Paris&plazas=3`
+  - URL: `http://localhost:11000/svuelo/vuelos/vuelos?destino=Paris&plazas=3`
 
 ## 4) Microservicio de Reservas
 
@@ -164,7 +164,7 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Alta de una Reserva**
 
-  - URL: `http://localhost:9500/reservas/reserva`
+  - URL: `http://localhost:11000/sreserva/reservas/reserva`
   - Ejemplo de cuerpo de la petición (POST):
   
     ```json
@@ -178,7 +178,7 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Recuperación de Reservas por Cliente**
 
-  - URL: `http://localhost:9500/reservas/reserva/client1`
+  - URL: `http://localhost:11000/sreserva/reservas/reserva/client1`
   - Ejemplo de respuesta (GET):
   
     ```json
