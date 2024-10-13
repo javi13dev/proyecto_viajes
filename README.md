@@ -6,9 +6,11 @@
 
 - **Java**: El lenguaje de programación en el que están implementados los microservicios.
 - **Spring Boot**: Framework utilizado para construir los microservicios, facilitando la creación de aplicaciones Java robustas y de alto rendimiento.
+- Para la autenticación y autorización se implementará mediante **Spring security**
 - **Eureka Server**: Servicio de descubrimiento que permite a los microservicios registrarse y encontrarse entre sí.
 - **Docker**: Utilizado para contenerizar los microservicios, asegurando que puedan ejecutarse de manera consistente en diferentes entornos.
-- 
+  Se creará los .jar de cada microservicio y un dockerfile asignado al mismo.
+  Para su ejecución en conjunto se usará docker compose.
   
 ## Arquitectura del Proyecto
 
@@ -16,6 +18,13 @@
 - **Gateway**: Un API Gateway centraliza el acceso a los microservicios, proporcionando una única entrada para el cliente.
 - **Eureka Server**: Actúa como un registro donde todos los microservicios se registran y desde donde pueden ser descubiertos.
 - **Docker**: Cada microservicio se empaqueta en un contenedor Docker, lo que facilita su despliegue y escalado.
+- Microservicio hoteles puerto:8000
+- Microservicio clientes puerto:8500
+- Microservicio vuelos puerto:9000
+- Microservicio reservas puerto:9500
+- Eureka server puerto:8761
+- Gateway puerto:11000
+
 
 ### Dependencias Iniciales que comparten los microservicios
 ```xml
