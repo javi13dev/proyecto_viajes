@@ -2,6 +2,19 @@
 
 - Cuatro microservicios que exponen diferentes recursos para la realización de reservas y consulta de las mismas. Los microservicios están desarrollados con **Spring Boot**, se registran y conectan mediante **Eureka Server**, y el consumo de recursos se realiza a través de descubrimiento de servicios. El cliente accede a estos recursos a través de un **API Gateway**, que abstrae la ubicación de los microservicios, simplificando su consumo.
 
+
+## Test microservicios
+
+- **1** : Iniciar el contenedor de la base de datos en /bbdd de acuerdo a la guía Imagen_contenedor_bbdd.txt.
+- **2** : Generar para cada servicio el .jar, situándose en el directorio del servicio:
+-  mvn clean package
+-  El .jar generado en /target del servicio se moverá a su directorio correspondiente en /docker
+-  Renombrar el .jar de acuerdo a su Dockerfile correspondiente, por ejemplo, microvuelos.jar
+- **3** : Adaptar la variable de entorno IP_HOST a la ip correspondiente donde se vaya a ejecutar. 
+- **4** : Levantar todos los contenedores mediante docker compose up
+
+- *O bien usar la plantilla de docker-compose-copia.yml donde se hace referencia a las imágenes de los servicios en docker hub.
+
 ## Tecnologías Utilizadas
 
 - **Java**: El lenguaje de programación en el que están implementados los microservicios.
@@ -9,8 +22,6 @@
 - Para la autenticación y autorización se implementará mediante **Spring security**
 - **Eureka Server**: Servicio de descubrimiento que permite a los microservicios registrarse y encontrarse entre sí.
 - **Docker**: Utilizado para contenerizar los microservicios, asegurando que puedan ejecutarse de manera consistente en diferentes entornos.
-  Se creará los .jar de cada microservicio y un dockerfile asignado al mismo.
-  Para su ejecución en conjunto se usará docker compose.
   
 ## Arquitectura del Proyecto
 
@@ -67,9 +78,9 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 ### Recursos Expuestos
 - **Datos de hotel por identificador**
-  - Ejemplo: `GET http://localhost:8000/hoteles/hotel/5`
+  - Ejemplo: `GET http://localhost:11000/shotel/hoteles/hotel/5`
 - **Lista de hoteles por localización**
-  - Ejemplo: `GET http://localhost:8000/hoteles/hoteles/Madrid`
+  - Ejemplo: `GET http://localhost:11000/shotel/hoteles/hoteles/Madrid`
 
 
 
@@ -86,11 +97,11 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Devolución de un Cliente por Usuario**
 
-  - URL: `http://localhost:8500/clientes/cliente/client1`
+  - URL: `http://localhost:11000/scliente/clientes/cliente/client1`
 
 - **Devolución de un Cliente a partir de Usuario y Contraseña**
 
-  - URL: `http://localhost:8500/clientes/cliente`
+  - URL: `http://localhost:11000/scliente/clientes/cliente`
   - Ejemplo de petición (login):
   
     ```json
@@ -114,7 +125,7 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Registro de un Cliente**
 
-  - URL: `http://localhost:8500/clientes/registro`
+  - URL: `http://localhost:11000/scliente/clientes/registro`
   - Ejemplo de cuerpo de petición:
   
     ```json
@@ -138,11 +149,11 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Datos de un Vuelo por Identificador**
   
-  - URL: `http://localhost:9000/vuelos/vuelo/1`
+  - URL: `http://localhost:11000/svuelo/vuelos/vuelo/1`
 
 - **Lista de Vuelos por Destino y Número de Plazas**
 
-  - URL: `http://localhost:9000/vuelos/vuelos?destino=Paris&plazas=3`
+  - URL: `http://localhost:11000/svuelo/vuelos/vuelos?destino=Paris&plazas=3`
 
 ## 4) Microservicio de Reservas
 
@@ -155,7 +166,7 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Alta de una Reserva**
 
-  - URL: `http://localhost:9500/reservas/reserva`
+  - URL: `http://localhost:11000/sreserva/reservas/reserva`
   - Ejemplo de cuerpo de la petición (POST):
   
     ```json
@@ -169,7 +180,7 @@ Este microservicio se conecta a la base de datos y expone la siguiente informaci
 
 - **Recuperación de Reservas por Cliente**
 
-  - URL: `http://localhost:9500/reservas/reserva/client1`
+  - URL: `http://localhost:11000/sreserva/reservas/reserva/client1`
   - Ejemplo de respuesta (GET):
   
     ```json
