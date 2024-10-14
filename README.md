@@ -13,6 +13,8 @@
 - **3** : Adaptar la variable de entorno IP_HOST a la ip correspondiente donde se vaya a ejecutar. 
 - **4** : Levantar todos los contenedores mediante docker compose up
 
+- *O bien usar la plantilla de docker-compose-copia.yml donde se hace referencia a las imágenes de los servicios en docker hub.
+
 ## Tecnologías Utilizadas
 
 - **Java**: El lenguaje de programación en el que están implementados los microservicios.
