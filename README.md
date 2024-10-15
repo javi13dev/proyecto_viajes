@@ -20,6 +20,8 @@ docker compose up
 - **4**: Probar en postman una petición get a las reservas ya realizadas por client1: http://localhost:11000/sreserva/reservas/reserva/client1
 - Obtiene las reservas en formato Json.
 
+---
+
 - O bien:
   
 - **1** : Iniciar el contenedor de la base de datos en /bbdd de acuerdo a la guía Imagen_contenedor_bbdd.txt.
