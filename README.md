@@ -6,13 +6,17 @@
 ## Test microservicios
 
 - **1**: Crear una red que compartirán los microservicios: docker network create mi-red
-  ```bash
+```bash
 docker network create mi-red
+```
 - Todos los servicios están dockerizados y con su correspondiente imagen
 - https://hub.docker.com/r/javi13dev/viajes/tags
 - https://hub.docker.com/r/javi13dev/mimysql/tags
 - **2**: Sustituir la ip correspondiente a la máquina en que se realice la prubea donde haya una ip en el archivo docker-compose.yml. 
-- **3**: Ejecutar el docker-compose.yml mediante: docker compose up
+- **3**: Ejecutar el docker-compose.yml mediante:
+```bash
+docker compose up
+```
 - **4**: Probar en postman una petición get a las reservas ya realizadas por client1: http://localhost:11000/sreserva/reservas/reserva/client1
 - Obtiene las reservas en formato Json.
 
