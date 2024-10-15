@@ -5,6 +5,19 @@
 
 ## Test microservicios
 
+- **1**: Crear una red que compartirán los microservicios: docker network create mi-red
+  ```bash
+docker network create mi-red
+- Todos los servicios están dockerizados y con su correspondiente imagen
+- https://hub.docker.com/r/javi13dev/viajes/tags
+- https://hub.docker.com/r/javi13dev/mimysql/tags
+- **2**: Sustituir la ip correspondiente a la máquina en que se realice la prubea donde haya una ip en el archivo docker-compose.yml. 
+- **3**: Ejecutar el docker-compose.yml mediante: docker compose up
+- **4**: Probar en postman una petición get a las reservas ya realizadas por client1: http://localhost:11000/sreserva/reservas/reserva/client1
+- Obtiene las reservas en formato Json.
+
+- O bien:
+  
 - **1** : Iniciar el contenedor de la base de datos en /bbdd de acuerdo a la guía Imagen_contenedor_bbdd.txt.
 - **2** : Generar para cada servicio el .jar, situándose en el directorio del servicio:
 -  mvn clean package
@@ -13,7 +26,6 @@
 - **3** : Adaptar la variable de entorno IP_HOST a la ip correspondiente donde se vaya a ejecutar. 
 - **4** : Levantar todos los contenedores mediante docker compose up
 
-- *O bien usar la plantilla de docker-compose-copia.yml donde se hace referencia a las imágenes de los servicios en docker hub.
 
 ## Tecnologías Utilizadas
 
