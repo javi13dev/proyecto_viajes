@@ -5,14 +5,14 @@
 
 ## Test microservicios
 
-- **1**: Crear una red que compartirán los microservicios: docker network create mi-red
+- **1**: Crear una red que compartirán los microservicios:
 ```bash
 docker network create mi-red
 ```
 - Todos los servicios están dockerizados y con su correspondiente imagen
 - https://hub.docker.com/r/javi13dev/viajes/tags
 - https://hub.docker.com/r/javi13dev/mimysql/tags
-- **2**: Sustituir la ip correspondiente a la máquina en que se realice la prubea donde haya una ip en el archivo docker-compose.yml. 
+- **2**: Sustituir la ip que figura en el archivo docker-compose.yml por la ip del host donde se realice la prueba. 
 - **3**: Ejecutar el docker-compose.yml mediante:
 ```bash
 docker compose up
