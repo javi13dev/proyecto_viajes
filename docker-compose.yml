@@ -1,0 +1,110 @@
+version: "3"
+services:
+  mysql:
+    image: javi13dev/mimysql
+    ports:
+      - 3307:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - mi-red
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  eurekaserver:
+    image: javi13dev/viajes:eurekaserver
+    ports:
+    - 8761:8761
+    networks:
+    - mi-red
+  shotel:
+    image: javi13dev/viajes:hotel
+    ports:
+    - 8000:8000
+    environment:
+    - DATABASE_URL=jdbc:mysql://mysql:3306/viajes
+    - URL_EUREKA=http://192.168.3.78:8761/eureka
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=8000
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+    - mysql
+  scliente:
+    image: javi13dev/viajes:cliente
+    ports:
+    - 8500:8500
+    environment:
+    - DATABASE_URL=jdbc:mysql://mysql:3306/viajes
+    - URL_EUREKA=http://192.168.3.78:8761/eureka
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=8500
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+    - mysql
+  svuelo:
+    image: javi13dev/viajes:vuelo
+    ports:
+    - 9000:9000
+    environment:
+    - DATABASE_URL=jdbc:mysql://mysql:3306/viajes
+    - DATABASE_URL_SECURITY=jdbc:mysql://mysql:3306/springsecurity
+    - URL_EUREKA=http://192.168.3.78:8761/eureka
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=9000
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+    - mysql
+  sreserva:
+    image: javi13dev/viajes:reserva
+    ports:
+    - 9500:9500
+    environment:
+    - DATABASE_URL=jdbc:mysql://mysql:3306/viajes
+    - DATABASE_URL_SECURITY=jdbc:mysql://mysql:3306/springsecurity
+    - URL_EUREKA=http://192.168.3.78:8761/eureka
+    - IP_HOST=192.168.3.78
+    - PORT_HOST=9500
+    - USUARIO_BBDD=root
+    - PASS_BBDD=root
+    - USUARIO=user1
+    - CONTRA=user1
+    networks:
+    - mi-red
+    depends_on:
+    - eurekaserver
+    - mysql
+  gateway:
+    image: javi13dev/viajes:gateway
+    ports:
+    - 11000:11000
+    environment:
+    - URL_EUREKA=http://192.168.3.78:8761/eureka
+    - PORT_HOST=11000
+    depends_on:
+    - scliente
+    - shotel
+    - svuelo
+    - sreserva
+    networks:
+    - mi-red
+networks:
+  mi-red:
+    external: true
+volumes:
+  mysql_data: 
